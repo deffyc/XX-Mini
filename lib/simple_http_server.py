@@ -133,7 +133,10 @@ class HttpServerHandler():
 
             self.parse_request()
             self.close_connection = 0
-
+            if self.handler_filters:
+                action = self.handler_filters.filter(self)
+                if action:
+                    return self.send_response('', **action)
             if self.command == "GET":
                 self.do_GET()
             elif self.command == "POST":
