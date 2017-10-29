@@ -38,9 +38,17 @@ class Config(object):
                 xlog.exception("data/manual.ini load error:%s", e)
 
         self.LISTEN_IP = self.CONFIG.get('listen', 'ip')
+        if os.environ.get('LISTEN_IP'):
+            self.LISTEN_IP=os.environ.get('LISTEN_IP')
         self.LISTEN_PORT = self.CONFIG.getint('listen', 'port')
+        if os.environ.get('LISTEN_PORT'):
+            self.LISTEN_PORT=os.environ.get('LISTEN_PORT')
         self.LISTEN_USERNAME = self.CONFIG.get('listen', 'username') if self.CONFIG.has_option('listen', 'username') else ''
+        if os.environ.get('LISTEN_USERNAME'):
+            self.LISTEN_USERNAME=os.environ.get('LISTEN_USERNAME')
         self.LISTEN_PASSWORD = self.CONFIG.get('listen', 'password') if self.CONFIG.has_option('listen', 'password') else ''
+        if os.environ.get('LISTEN_PASSWORD'):
+            self.LISTEN_PASSWORD=os.environ.get('LISTEN_PASSWORD')
         self.LISTEN_VISIBLE = self.CONFIG.getint('listen', 'visible')
         self.LISTEN_DEBUGINFO = self.CONFIG.getint('listen', 'debuginfo')
 
@@ -82,7 +90,11 @@ class Config(object):
 
         self.PAC_ENABLE = self.CONFIG.getint('pac', 'enable')
         self.PAC_IP = self.CONFIG.get('pac', 'ip')
+        if os.environ.get('PAC_IP'):
+            self.PAC_IP=os.environ.get('PAC_IP')
         self.PAC_PORT = self.CONFIG.getint('pac', 'port')
+        if os.environ.get('LISTEN_IP'):
+            self.PAC_PORT=os.environ.get('PAC_IP')
         self.PAC_FILE = self.CONFIG.get('pac', 'file').lstrip('/')
         self.PAC_GFWLIST = self.CONFIG.get('pac', 'gfwlist')
         self.PAC_ADMODE = self.CONFIG.getint('pac', 'admode')
