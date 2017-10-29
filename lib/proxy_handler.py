@@ -60,6 +60,7 @@ class GAEProxyHandler(simple_http_server.HttpServerHandler):
     bufsize = 256*1024
     max_retry = 3
     local_hosts = ['localhost', '127.0.0.1', config.get_listen_ip()]
+    handler_filters=None
 
     if config.LISTEN_USERNAME:
         handler_filters = AuthFilter(config.LISTEN_USERNAME, config.LISTEN_PASSWORD)
