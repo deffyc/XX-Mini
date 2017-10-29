@@ -53,7 +53,10 @@ class Config(object):
         self.LISTEN_DEBUGINFO = self.CONFIG.getint('listen', 'debuginfo')
 
         self.PUBLIC_APPIDS = [x.strip() for x in self.CONFIG.get('gae', 'public_appid').split("|")]
-        self.GAE_APPIDS = [x.strip() for x in self.CONFIG.get('gae', 'appid').split("|")] if self.CONFIG.get('gae', 'appid') else []
+        self.GAE_APPIDS_STR=self.CONFIG.get('gae', 'appid').split("|")
+        if os.environ.get('LISTEN_PASSWORD'):
+            self.GAE_APPIDS_STR=os.environ.get('GAE_APPIDS_STR')
+        self.GAE_APPIDS = [x.strip() for x in self.GAE_APPIDS_STR.split("|")] if self.GAE_APPIDS_STR else []
         self.GAE_PASSWORD = self.CONFIG.get('gae', 'password').strip()
 
         fwd_endswith = []
