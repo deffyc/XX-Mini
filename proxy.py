@@ -11,12 +11,8 @@ if not os.path.isdir(data_path): os.mkdir(data_path)
 # add python lib path
 sys.path.insert(0, work_path + '/lib')
 if sys.platform.startswith("linux"):
-    sys.path.append(work_path + '/lib.egg')
-    # reduce resource request for threading, for OpenWrt
     import threading
     threading.stack_size(128*1024)
-elif sys.platform == "darwin":
-    sys.path.append(work_path + '/lib.egg')
 
 
 from xlog import getLogger
