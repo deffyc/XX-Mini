@@ -96,8 +96,8 @@ class Config(object):
         if os.environ.get('PAC_IP'):
             self.PAC_IP=os.environ.get('PAC_IP')
         self.PAC_PORT = self.CONFIG.getint('pac', 'port')
-        if os.environ.get('PAC_IP'):
-            self.PAC_PORT=int(os.environ.get('PAC_IP'))
+        if os.environ.get('PAC_PORT'):
+            self.PAC_PORT=int(os.environ.get('PAC_PORT'))
         self.PAC_FILE = self.CONFIG.get('pac', 'file').lstrip('/')
         self.PAC_GFWLIST = self.CONFIG.get('pac', 'gfwlist')
         self.PAC_ADMODE = self.CONFIG.getint('pac', 'admode')
