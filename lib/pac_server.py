@@ -350,6 +350,7 @@ class PacUtil(object):
 
 
 class PACServerHandler(simple_http_server.HttpServerHandler):
+    handler_filters=None
     def address_string(self):
         return '%s:%s' % self.client_address[:2]
 
