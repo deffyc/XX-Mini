@@ -13,6 +13,8 @@ RUN mkdir /xx && \
 # add all repo
 ADD ./ /xx
 
+RUN wget -O ip_checked.txt https://raw.githubusercontent.com/XX-net/XX-Net/master/code/default/gae_proxy/local/ip_checked.txt
+
 # run test
 WORKDIR /xx
 RUN pip install pyOpenSSL
