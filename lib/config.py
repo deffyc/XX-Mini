@@ -42,7 +42,7 @@ class Config(object):
             self.LISTEN_IP=os.environ.get('LISTEN_IP')
         self.LISTEN_PORT = self.CONFIG.getint('listen', 'port')
         if os.environ.get('LISTEN_PORT'):
-            self.LISTEN_PORT=os.environ.get('LISTEN_PORT')
+            self.LISTEN_PORT=int(os.environ.get('LISTEN_PORT'))
         self.LISTEN_USERNAME = self.CONFIG.get('listen', 'username') if self.CONFIG.has_option('listen', 'username') else ''
         if os.environ.get('LISTEN_USERNAME'):
             self.LISTEN_USERNAME=os.environ.get('LISTEN_USERNAME')
@@ -93,8 +93,8 @@ class Config(object):
         if os.environ.get('PAC_IP'):
             self.PAC_IP=os.environ.get('PAC_IP')
         self.PAC_PORT = self.CONFIG.getint('pac', 'port')
-        if os.environ.get('LISTEN_IP'):
-            self.PAC_PORT=os.environ.get('PAC_IP')
+        if os.environ.get('PAC_IP'):
+            self.PAC_PORT=int(os.environ.get('PAC_IP'))
         self.PAC_FILE = self.CONFIG.get('pac', 'file').lstrip('/')
         self.PAC_GFWLIST = self.CONFIG.get('pac', 'gfwlist')
         self.PAC_ADMODE = self.CONFIG.getint('pac', 'admode')
