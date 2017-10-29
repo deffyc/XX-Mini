@@ -9,7 +9,7 @@ ENV LISTEN_PASSWORD $LISTEN_PASSWORD
 ENV LISTEN_PORT $LISTEN_PORT
 
 RUN mkdir /xx && \
-   wget -O /xx/ip_checked.txt https://raw.githubusercontent.com/XX-net/XX-Net/master/code/default/gae_proxy/local/ip_checked.txt & \
+   wget -O /xx/ip_checked.txt https://raw.githubusercontent.com/XX-net/XX-Net/master/code/default/gae_proxy/local/ip_checked.txt && \
    cd /xx
 # add all repo
 ADD ./ /xx
